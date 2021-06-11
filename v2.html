@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alpine v2</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+</head>
+<body>
+  <script>
+    function asKey () {
+      return {
+        open: false,
+        foo: {
+          ['x-show']() {
+            return this.open
+          },
+          ['x-transition:enter']: "transition ease-out duration-100",
+          ['x-transition:enter-start']: "transform opacity-0 scale-90",
+          ['x-transition:enter-end']: "transform opacity-100 scale-100",
+        }
+      }
+    }
+
+    function asFunction () {
+      return {
+        open: false,
+        foo: {
+          ['x-show']() {
+            return this.open
+          },
+          ['x-transition:enter']() {
+            return "transition ease-out duration-100"
+          },
+          ['x-transition:enter-start']() {
+            return "transform opacity-0 scale-90"
+          },
+          ['x-transition:enter-end']() {
+            return "transform opacity-100 scale-100"
+          },
+        }
+      }
+    }
+  </script>
+
+
+  <div x-data="asKey()">
+    <button @click="open = !open">Click me</button>
+    <div x-spread="foo">
+      👋 Hi
+    </div>
+  </div>
+
+  <div x-data="asFunction()">
+    <button @click="open = !open">Click me</button>
+    <div x-spread="foo">
+      👋 Hi
+    </div>
+  </div>
+
+</body>
+</html>
