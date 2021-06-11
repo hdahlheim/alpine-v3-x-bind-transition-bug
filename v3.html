@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>alpine v3</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <script defer src="./cdn.min.js"></script>
+  <script defer src="./cdn.js"></script>
 </head>
 <body>
   <script>
@@ -46,16 +46,16 @@
   </script>
 
 
-  <div x-data="asKey">
+  <div x-data="asKey()">
     <button @click="open = !open">Click me</button>
-    <div x-bind="bar">
+    <div x-bind="foo">
       👋 Hi
     </div>
   </div>
 
   <div x-data="asFunction()">
     <button @click="open = !open">Click me</button>
-    <div x-bind="bar">
+    <div x-bind="foo">
       👋 Hi
     </div>
   </div>
